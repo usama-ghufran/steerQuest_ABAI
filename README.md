@@ -53,6 +53,21 @@ COMPILING INSTRUCTIONS
 2. Run the run_scene<level>.sh
 If you get linker errors, make sure you set LD_LIBRARY_PATH to path of the dynamic .so file.
 
+UPDATE THE MAKE FILE WITH THIS COMMAND INSTEAD:
+
+	g++ main.cpp Boid.cpp Flocking.cpp Simulation.cpp MapLoader.cpp -std=c++0x -D__LINUX_COMPILE -o ../runtime/flock-solve -lopenvdb -lHalf -ltbb -lpthread -lX11 -ldynamic -I./ -L./
+
+
+##############################
+Collision Detection
+##############################
+1. Use the Scene.h objects/pointers in the files to access start/end positions and other data. Flocking.cpp has a handle to Scene object called sceneMap. getCell(x,y) tells you if there is an obstacle in x,y or not. 
+2. Use collisionSDF[x][y] to know how far away x,y  is form the nearest obstacle. Value of 0 mean x,y is on the edge of the obstacle and negative means it's inside . Flocking.cpp
+3. use partialDerivatives[x][y] to know the direction away from the nearest osbtacle at positino x,y. Flocking.cpp
+
+
+
+
 
 
 
