@@ -33,7 +33,7 @@ Populate the vector of 'Boid'.
 Level 1
 
 The sheep must navigate static obstacles, as they go from source to destination, while maintaining the flock.
-Use MapLoader.cpp for accessing the VDB library. The scene/obstacles information is supplied as a VDB.
+Use Sccene.h to access the start and destination. The scene/obstacles information is supplied.
 
 Level 2
 
@@ -61,13 +61,18 @@ UPDATE THE MAKE FILE WITH THIS COMMAND INSTEAD:
 ##############################
 Collision Detection
 ##############################
+Static Obstacles
 1. Use the Scene.h objects/pointers in the files to access start/end positions and other data. Flocking.cpp has a handle to Scene object called sceneMap. getCell(x,y) tells you if there is an obstacle in x,y or not. 
 2. Use collisionSDF[x][y] to know how far away x,y  is form the nearest obstacle. Value of 0 mean x,y is on the edge of the obstacle and negative means it's inside . Flocking.cpp
 3. use partialDerivatives[x][y] to know the direction away from the nearest osbtacle at positino x,y. Flocking.cpp
 
+Dynamic Obstacle ( moving tractor in scene1)
+1. use the obstacle vector in constant.h to access the location of the obstacle.
 
+FAQ:
+Q. Can we access the destination vector and make the sheep move towards it?
+A. Yes, how else will you make them reach the destination.
 
-
-
-
+Notes/Hints:
+You don't have to bother about VDBs and map handling. Just focus on working on the boids and flocking.
 
